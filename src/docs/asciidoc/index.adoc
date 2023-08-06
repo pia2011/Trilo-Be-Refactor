@@ -1,0 +1,941 @@
+= TriLo - API Document
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs // 문서에 표기되는 코드들의 하이라이팅을 highlightjs를 사용
+:toc: left // toc (Table Of Contents)를 문서의 좌측에 두기
+:toclevels: 2
+:sectlinks:
+:docinfo: shared-head
+
+'''
+
+== Auth API
+
+=== 카카오 OAuth2 로그인
+
+==== 기본 정보
+- 메서드 : POST
+- URL : `/api/auth/login/kakao`
+
+==== 요청
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/카카오_로그인_요청/request-fields.adoc[]
+==== 응답
+===== 헤더
+include::{snippets}/auth-rest-controller-docs-test/카카오_로그인_요청/response-headers.adoc[]
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/카카오_로그인_요청/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/auth-rest-controller-docs-test/카카오_로그인_요청/http-request.adoc[]
+===== 응답
+include::{snippets}/auth-rest-controller-docs-test/카카오_로그인_요청/http-response.adoc[]
+
+'''
+
+=== 네이버 OAuth2 로그인
+
+==== 기본 정보
+
+- 메서드 : POST
+- URL : `/api/auth/login/naver`
+
+==== 요청
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/네이버_로그인_요청/request-fields.adoc[]
+==== 응답
+===== 헤더
+include::{snippets}/auth-rest-controller-docs-test/네이버_로그인_요청/response-headers.adoc[]
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/네이버_로그인_요청/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/auth-rest-controller-docs-test/네이버_로그인_요청/http-request.adoc[]
+===== 응답
+include::{snippets}/auth-rest-controller-docs-test/네이버_로그인_요청/http-response.adoc[]
+
+---
+
+=== 구글 OAuth2 로그인
+
+==== 기본 정보
+
+- 메서드 : POST
+- URL : `/api/auth/login/google`
+
+==== 요청
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/구글_로그인_요청/request-fields.adoc[]
+==== 응답
+===== 헤더
+include::{snippets}/auth-rest-controller-docs-test/구글_로그인_요청/response-headers.adoc[]
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/구글_로그인_요청/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/auth-rest-controller-docs-test/구글_로그인_요청/http-request.adoc[]
+===== 응답
+include::{snippets}/auth-rest-controller-docs-test/구글_로그인_요청/http-response.adoc[]
+
+---
+
+=== 로그아웃
+
+==== 기본 정보
+- 메서드 : POST
+- URL : `/api/auth/logout`
+
+==== 요청
+===== 쿠키
+include::{snippets}/auth-rest-controller-docs-test/로그아웃_요청/request-cookies.adoc[]
+===== 헤더
+include::{snippets}/auth-rest-controller-docs-test/로그아웃_요청/request-headers.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/auth-rest-controller-docs-test/로그아웃_요청/http-request.adoc[]
+===== 응답
+include::{snippets}/auth-rest-controller-docs-test/로그아웃_요청/http-response.adoc[]
+
+
+---
+
+=== 재발급 토큰 상태 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/auth/token/refresh-token-info`
+
+==== 요청
+===== 쿠키
+include::{snippets}/auth-rest-controller-docs-test/재발급_토큰_상태_조회_요청/request-cookies.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/재발급_토큰_상태_조회_요청/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/auth-rest-controller-docs-test/재발급_토큰_상태_조회_요청/http-request.adoc[]
+===== 응답
+include::{snippets}/auth-rest-controller-docs-test/재발급_토큰_상태_조회_요청/http-response.adoc[]
+
+---
+
+=== 접근 토큰 재발급
+
+==== 기본 정보
+
+- 메서드 : POST
+- URL : `/api/auth/reissue`
+
+==== 요청
+===== 쿠키
+include::{snippets}/auth-rest-controller-docs-test/접근토큰_재발급_요청/request-cookies.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/auth-rest-controller-docs-test/접근토큰_재발급_요청/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/auth-rest-controller-docs-test/접근토큰_재발급_요청/http-request.adoc[]
+===== 응답
+include::{snippets}/auth-rest-controller-docs-test/접근토큰_재발급_요청/http-response.adoc[]
+'''
+
+== Trip API
+
+=== Trip 생성
+==== 기본 정보
+- 메서드 : GET
+- URL : /api/trips
+- 인증방식 : 액세스 토큰
+
+현재 로그인 한 사용자 소유의 여행(Trip)을 생성 후, 생성된 여행의 식별자를 반환합니다.
+이 때, 여행이 정상적으로 생성됐다면 여행은 기본적으로 기간이 설정되지 않은 상태이므로 `UNDECIDED` 상태가 됩니다.
+생성된 여행은 기본 이미지를 가지며, 여행 이미지 수정 API를 통해 이미지를 수정할 수 있습니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-create-controller-docs-test/success-test/request-headers.adoc[]
+===== 본문
+include::{snippets}/trip-create-controller-docs-test/success-test/request-fields.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/trip-create-controller-docs-test/success-test/response-fields.adoc[]
+
+==== 예제
+===== 요청
+include::{snippets}/trip-create-controller-docs-test/success-test/http-request.adoc[]
+
+사용자는 지정한 title을 제목으로 한 여행을 생성해달라고 서버에 요청을 합니다.
+
+===== 응답
+include::{snippets}/trip-create-controller-docs-test/success-test/http-response.adoc[]
+
+서버는 요청 사항에 맞게 여행을 생성하고, 생성된 여행의 식별자를 반환합니다.
+
+'''
+
+=== Trip 제목 수정
+
+==== 기본 정보
+- 메서드 : PUT
+- URL : `/api/trips/{tripId}/title`
+- 인증방식 : 액세스 토큰
+
+요청한 여행에 대해서 요청한 제목으로 여행의 제목을 수정합니다.
+수정이 성공됐을 경우, 다시 여행의 식별자를 응답합니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-title-update-controller-docs-test/update-trip-title_with_authorized-user/request-headers.adoc[]
+===== 경로 변수(PathVariable)
+include::{snippets}/trip-title-update-controller-docs-test/update-trip-title_with_authorized-user/path-parameters.adoc[]
+
+- 유효한 여행 식별자(tripId)를 전달해야합니다.
+
+===== 본문
+include::{snippets}/trip-title-update-controller-docs-test/update-trip-title_with_authorized-user/request-fields.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/trip-title-update-controller-docs-test/update-trip-title_with_authorized-user/http-request.adoc[]
+
+==== 예제
+===== 요청
+include::{snippets}/trip-title-update-controller-docs-test/update-trip-title_with_authorized-user/http-request.adoc[]
+
+사용자는 경로변수를 통해 어떤 여행을 수정할 것인지 지정하고, 요청 본문에 변경할 제목을 전달합니다.
+
+===== 응답
+include::{snippets}/trip-title-update-controller-docs-test/update-trip-title_with_authorized-user/http-response.adoc[]
+
+서버는 요청 사항에 맞게 여행의 제목을 수정하고, 수정된 여행의 식별자를 다시 반환합니다.
+
+'''
+
+=== Trip 기간 수정
+
+==== 기본 정보
+- 메서드 : PUT
+- URL : `/api/trips/{tripId}/period`
+- 인증방식 : 액세스 토큰
+
+요청한 여행에 대해서 요청한 기간으로 여행의 상태를 수정합니다.
+수정이 성공됐을 경우, 다시 여행의 식별자를 응답합니다.
+
+===== 기간 변경과 임시보관함
+사용자가 시작일과 종료일을 전달한다면 여행의 기간이 해당 기간에 맞게 설정됩니다.
+
+만약 기존에 기간이 정해져있는 상태이고 각각의 Day마다 일정이 있을 때, 새로 변경된 기간에 속하지 않는 Day의 일정들은 임시보관함으로 일괄 이동됩니다.
+예를 들어, 2023년 3월 1일부터 2023년 3월 3일까지 잡혀진 여행 기간을 2023년 3월 3일부터 2023년 3월 5일까지의 여행 기간으로 변경할 경우, 새로운 여행 기간에 속하지 않는
+2023년 3월 1일부터 2023년 3월 2일까지의 Day에 속한 일정들은 모두 임시보관함으로 이동됩니다.
+
+===== 새로 생성되는 기간
+여행 기간 변경으로, 기존 기간에 속해있지 않은 날짜(Day) 들이 새로 생성됩니다. 이들 Day는 각각 기본적으로 랜덤한 색상을 가집니다.
+
+====== 기간 변경과 여행의 상태
+기존에 기간이 설정되어있지 않은 경우(여행을 처음 생성한 상태를 유지할 때) 기간의 초기화가 이 시점에 이루어집니다.
+기존에 여행 기간이 초기화되지 않은 경우 `UNDECIDED` 상태를 가지고 있다가, 여행의 기간이 초기화될 경우 여행은 `DECIDED` 상태를 가지게 됩니다.
+
+===== 여행 기간 길이 제약 조건
+
+여행 기간은 최대 10일까지 설정할 수 있습니다. 최대 가능일수를 초과한 일수의 기간은 설정할 수 없습니다.
+
+여행 기간이 한 번이라도 초기화 된 상태(`DECIDED`)의 여행에 대해 시작일과 종료일을 둘다 null로 변경할 수 없습니다.
+여행 기간이 정해져 있지 않은 상태(`UNDECIDED`)는 여행 생성 이후 기간 초기화 직전까지에만 가능하며 한번 기간을 초기화한 경우 그 이후에는 기간이 없는 상태(`UNDECIDED`) 로 돌릴 수 없습니다.
+
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-period-update-controller-docs-test/update-trip-period_with_authorized-user/request-headers.adoc[]
+
+===== 경로변수(PathVariable)
+include::{snippets}/trip-period-update-controller-docs-test/update-trip-period_with_authorized-user/path-parameters.adoc[]
+
+- 유효한 여행 식별자(tripId)를 전달해야합니다.
+
+===== 본문
+include::{snippets}/trip-period-update-controller-docs-test/update-trip-period_with_authorized-user/request-fields.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/trip-period-update-controller-docs-test/update-trip-period_with_authorized-user/response-fields.adoc[]
+
+==== 예제
+===== 요청
+include::{snippets}/trip-period-update-controller-docs-test/update-trip-period_with_authorized-user/http-request.adoc[]
+
+사용자는 경로변수를 통해 어떤 여행을 수정할 것인지 지정하고, 요청 본문에 변경할 기간(시작일, 종료일)을 전달합니다.
+
+===== 응답
+include::{snippets}/trip-period-update-controller-docs-test/update-trip-period_with_authorized-user/http-response.adoc[]
+
+서버는 요청 사항에 맞게 여행을 수정하고, 수정된 여행의 식별자를 다시 반환합니다.
+
+'''
+
+'''
+
+=== Trip 이미지 수정
+
+==== 기본 정보
+- 메서드 : POST
+- URL : `/api/trips/{tripId}/image/update`
+- 인증방식 : 액세스 토큰
+
+요청한 여행의 이미지를 수정합니다.
+수정이 성공됐을 경우, 다시 여행의 식별자와 여행 이미지의 URL(경로)을 응답합니다.
+
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-image-update-controller-docs-test/trip-image-update-api-docs-test/request-headers.adoc[]
+
+===== 경로변수(PathVariable)
+include::{snippets}/trip-image-update-controller-docs-test/trip-image-update-api-docs-test/path-parameters.adoc[]
+- 유효한 여행 식별자(tripId)를 전달해야합니다.
+
+===== 멀티파트
+include::{snippets}/trip-image-update-controller-docs-test/trip-image-update-api-docs-test/request-parts.adoc[]
+
+- 멀티파트 요청을 통해, 이미지를 전달해야합니다. 멀티파트 요청이 아닐 경우 예외가 발생합니다.
+
+
+==== 응답
+===== 본문
+include::{snippets}/trip-image-update-controller-docs-test/trip-image-update-api-docs-test/response-fields.adoc[]
+
+==== 예제
+===== 요청
+
+[source]
+----
+POST /api/trips/1/image/update HTTP/1.1
+Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Authorization: Bearer accessToken
+Host: localhost:8080
+
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=image; filename=(이미지 파일).jpeg
+Content-Type: image/jpeg
+
+(이미지 파일 바이너리 데이터)
+----
+사용자는 경로변수를 통해 여행의 식별자를 전달하고, 멀티파트의 `image` 파트를 통해 이미지를 전달합니다.
+
+===== 응답
+include::{snippets}/trip-image-update-controller-docs-test/trip-image-update-api-docs-test/http-response.adoc[]
+
+서버는 요청 사항에 맞게 여행의 이미지을 수정하고, 수정된 여행의 식별자 및 저장 URL(경로)를 반환합니다.
+
+'''
+
+=== Trip 삭제
+
+==== 기본정보
+- 메서드 : DELETE
+- URL : `/api/trips/{tripId}`
+- 인증방식 : 액세스 토큰
+
+요청한 여행을 삭제합니다. 여행의 소유자만 여행을 삭제할 수 있고, 여행이 실제로 존재해야합니다.(여행이 존재하지 않을 경우 예외가 발생합니다.)
+여행이 삭제되면, 여행에 속해있는 Day 및 일정들도 모두 일괄적으로 삭제됩니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-delete-controller-docs-test/trip-delete-doc-test/request-headers.adoc[]
+
+===== 경로 변수(PathVariable)
+include::{snippets}/trip-delete-controller-docs-test/trip-delete-doc-test/path-parameters.adoc[]
+
+- 유효한 여행 식별자(tripId)를 전달해야합니다.
+
+==== 응답
+===== 본문
+성공적으로 여행이 삭제될 경우 본문에 아무 내용도 전달되지 않고, 상태코드로 204 No Content만 전달됩니다.
+
+==== 예제
+===== 요청
+include::{snippets}/trip-delete-controller-docs-test/trip-delete-doc-test/http-request.adoc[]
+
+사용자는 경로변수를 통해 어떤 여행을 삭제할 것인지 지정합니다.
+
+===== 응답
+include::{snippets}/trip-delete-controller-docs-test/trip-delete-doc-test/http-response.adoc[]
+
+여행이 성공적으로 삭제되고(여행에 속한 Day, 일정들도 삭제된 뒤), 응답 본문에 아무 것도 담기지 않은 채
+상태코드 204 No Content가 전달됩니다.
+
+
+'''
+
+=== Trip 조회
+
+==== 기본정보
+
+- 메서드 : GET
+- URL : `/api/trips/{tripId}`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/single-trip-query-controller-docs-test/여행_단건_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/single-trip-query-controller-docs-test/여행_단건_조회/path-parameters.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/single-trip-query-controller-docs-test/여행_단건_조회/response-fields.adoc[]
+
+==== 예제
+===== 요청
+include::{snippets}/single-trip-query-controller-docs-test/여행_단건_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/single-trip-query-controller-docs-test/여행_단건_조회/http-response.adoc[]
+
+'''
+
+=== 사용자 여행 목록 조회
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/tripper/{tripperId}/trips`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/path-parameters.adoc[]
+===== 쿼리 변수
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/query-parameters.adoc[]
+
+- 첫 페이지 조회 요청 시 커서, 즉 tripId를 쿼리 파라미터에 포함하지 않습니다. 여행 정보들이 size 만큼 조회됩니다.
+- 이후 페이지 조회 요청 시 tripId 를 쿼리 파라미터에 포함하게 되면 해당 tripId 보다 작은 tripId 를 갖는 여행 정보들이 size 만큼 조회됩니다.
+
+==== 응답
+===== 본문
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/response-fields.adoc[]
+===== Trips
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/response-fields-trips.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/tripper-trip-list-query-controller-docs-test/사용자_여행_목록_조회/http-response.adoc[]
+
+'''
+
+=== 임시보관함 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/trips/{tripId}/temporary-storage`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/path-parameters.adoc[]
+===== 쿼리 변수
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/query-parameters.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/response-fields.adoc[]
+===== TempSchedules
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/response-fields-tempSchedules.adoc[]
+===== Coordinate
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/response-fields-coordinate.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/trip-temporary-storage-query-controller-docs-test/임시보관함_조회/http-response.adoc[]
+
+- 첫 페이지 조회 요청 시 커서, 즉 scheduleId를 쿼리 파라미터에 포함하지 않습니다. 일정 정보들이 size 만큼 조회됩니다.
+- 이후 페이지 조회 요청 시 scheduleId 를 쿼리 파라미터에 포함하게 되면 해당 ID에 해당하는 일정보다 큰 순서값을 갖는 일정들이 size 만큼 조회됩니다.
+
+'''
+
+=== Schedule 생성
+
+==== 기본 정보
+
+- 메서드 : POST
+- URL : `/api/schedules`
+- 인증 방식 : 액세스 토큰
+
+일정을 생성합니다.
+
+어느 Trip의 어느 Day에 일정을 생성할 지 day의 식별자(dayId) 값을 통해 지정할 수 있으며, Day의 식별자(dayId)가 null 이면 해당 여행(Trip)의 임시보관함에 일정이 생성됩니다.
+이 때, 전달된 식별자의 Day가 해당 Trip에 속하지 않을 경우, 예외가 발생합니다.
+
+===== 생성 일정의 순서
+- Day의 식별자(dayId)가 null이 아니고, Trip에 속한 Day의 식별자면 해당 Day에 정상적으로 일정이 생성됩니다. 이 때 일정은 해당 Day의 맨 뒤에 생성됩니다.
+- Day의 식별자(dayId)가 null이면, Trip의 임시보관함에 일정이 생성됩니다. 이 때 일정은 임시보관함의 맨 앞에 생성됩니다.
+
+===== 일정 갯수 제약 조건
+- 여행 당 일정 갯수 제한 : 1개의 여행은 내부의 Day, 임시보관함을 통틀어 총 110개까지 일정을 가질 수 있습니다. 기존에 110개의 일정이 생성되어 있다면
+더 이상 일정을 생성할 수 없습니다.
+- Day 당 일정 갯수 제한 : 1개의 Day는 총 10개까지 일정을 가질 수 있습니다. 어떤 Day에 일정이 10개 생성되어 있다면 해당 Day에는 더 이상 일정을 생성할 수 없습니다.
+- 임시보관함 일정 생성 제한 : 임시보관함에는 '여행 당 일정 갯수 제한'의 갯수 제한 범위 내에서 일정을 자유롭게 추가할 수 있습니다.
+
+===== 기본값
+- 생성된 일정의 시작시간, 종료시간의 초깃값은 각각 0시 0분입니다.
+- 생성된 일정의 본문은 기본적으로 빈 문자열입니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/schedule-create-controller-docs-test/schedule-create-doc-test/request-headers.adoc[]
+
+===== 본문
+include::{snippets}/schedule-create-controller-docs-test/schedule-create-doc-test/request-fields.adoc[]
+
+===== 좌표(Coordinate) 타입
+include::{snippets}/schedule-create-controller-docs-test/schedule-create-doc-test/request-fields-beneath-coordinate.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/schedule-create-controller-docs-test/schedule-create-doc-test/response-fields.adoc[]
+
+==== 예제
+===== 요청
+include::{snippets}/schedule-create-controller-docs-test/schedule-create-doc-test/http-request.adoc[]
+
+사용자는 어느 Trip의 어느 Day에 일정을 생성할 것인지 지정합니다. 이 때, Trip Id가 null 이면 임시보관함에 삽입되고, dayId가 null 이 아니면
+해당 day에 일정이 생성됩니다. (단, 해당 식별자의 Day가 Trip에 속해야합니다!)
+
+
+===== 응답
+include::{snippets}/schedule-create-controller-docs-test/schedule-create-doc-test/http-response.adoc[]
+
+일정이 정상적으로 생성되면, 생성된 일정(Schedule)의 식별자가 반환되고, 상태코드로 201 Created가 전달됩니다.
+
+'''
+
+
+=== Schedule 수정
+
+==== 기본 정보
+- 메서드 : PUT
+- URL : `/api/schedules/{scheduleId}`
+- 인증 방식 : 액세스 토큰
+
+요청 Schedule의 제목과 본문을 수정하는 API입니다.
+이때, Trip, Schedule의 소유자가 아닌 사람이 일정을 수정하려 시도할 경우 예외가 발생합니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/schedule-update-controller-docs-test/schedule-update-doc-test/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/schedule-update-controller-docs-test/schedule-update-doc-test/path-parameters.adoc[]
+===== 본문
+include::{snippets}/schedule-update-controller-docs-test/schedule-update-doc-test/request-fields.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/schedule-update-controller-docs-test/schedule-update-doc-test/response-fields.adoc[]
+
+
+==== 예제
+===== 요청
+include::{snippets}/schedule-update-controller-docs-test/schedule-update-doc-test/http-request.adoc[]
+
+사용자는 경로 변수를 통해 수정하고자 하는 여행의 식별자를 전달하고, 본문을 통해 어떤 제목/본문으로 변경할지, 계획 시간을 어느 시간대로 변경할 지, 전달합니다.
+
+===== 응답
+include::{snippets}/schedule-update-controller-docs-test/schedule-update-doc-test/http-response.adoc[]
+
+정상적으로 일정이 수정됐을 경우, 일정의 식별자를 본문으로 담고 상태코드 200 Ok 를 함께 응답합니다.
+
+'''
+
+
+=== Schedule 이동
+
+==== 기본정보
+- 메서드 : PUT
+- URL : `/api/schedules/{scheduleId}/position`
+- 인증방식 : 액세스 토큰
+
+요청한 일정을 이동합니다. 여행의 소유자(== 일정의 소유자)만 일정을 이동할 수 있고, 일정이 실제로 존재해야합니다. (일정이 존재하지 않을 경우 예외가 발생합니다.)
+
+===== 일정의 순서
+
+각각의 Day에서 일정(Schedule)은 순서를 가집니다. 이 순서는 0,1,2,3,4,... 순입니다.
+그런데 일정을 이동시키기 위해서는 순서를 지정해야하는데 이 순서를 어떻게 지정할 지 난해할 수 있기 때문에 이 부분에 대해 설명을 하도록 하겠습니다.
+
+
+image::/docs/imgs/schedule-move1.jpg[]
+
+위의 그림에서 Day1에는 일정이 3개 있고(a,b,c) 일정 각각은 0,1,2 순서를 가집니다.
+Day2에도 일정이 4개 있고(d,e,f,g) 일정 각각은 0,1,2,3 번 순서를 가집니다.
+
+여기서 Day1의 일정(a)을 Day2의 특정 순서에 두는 상황을 가정해보겠습니다. 이 경우 지정 가능한 순서값은 0,1,2,3,4가 됩니다. 0번은 제일 맨 앞으로 이동하는 것이고,
+4번은 기존 Day2에 없던 순서이지만, 기존 마지막 순서값인 3보다 1 크므로 맨 뒤에 놓는다는 의미가 됩니다. (다만 여기서 4보다 큰 값을 지정하면 예외가 발생합니다.)
+
+이런 상황에서 Day1에 위치한 0번 위치 일정(a)을 두 일정 f, g 사이로 옮기고 싶다면, 순서값으로 3을 지정하면 됩니다.
+3번 순서는 일정 g의 자리인데 이 자리로 a를 이동시키고, g를 밀어내는 것입니다.
+
+image::/docs/imgs/schedule-move2.jpg[]
+
+우리가 지정한 일정(a)이 실제로 Day2의 2번 순서로 이동된 결과입니다. 일정 a는 f, g의 사이 3번 자리로 이동됐습니다.
+
+기존 Day1의 1,2번 순서에 있던 일정들(b,c)은 a의 자리가 비게 되므로 앞으로 밀려나서 각각 0,1 번 순서를 가지게 되었고,
+기존 Day2의 3번 순서에 있던 일정들 g는 뒤로 밀려나서 4번 순서를 가지게 되었습니다.
+
+
+image::/docs/imgs/schedule-move3.jpg[]
+
+이번에는 같은 Day(또는 임시보관함) 내부에서 일정을 이동시키는 경우를 확인해봅시다.
+
+Day 1에서, 일정이 4개 있고(a,b,c,d) 각각은 0,1,2,3 순서를 가집니다. 여기서 1번 순서에 위치한 일정(b)를 특정 순서에 두는 상황을 가정해보겠습니다.
+
+이 경우 지정 가능한 순서값은 0,1,2,3,4가 됩니다. 0번은 제일 맨 앞으로 이동하는 것이고,
+4번은 기존 Day1에 없던 순서이지만, 기존 마지막 순서값인 3보다 1 크므로 맨 뒤에 놓는다는 의미가 됩니다. (다만 여기서 4보다 큰 값을 지정하면 예외가 발생합니다.)
+
+또, 1번 순서 일정(b)을 1번 또는 2번에 놓는 시도를 할 경우 같은 자리로 이동하는 것으로 간주합니다. 1번의 경우는 기존과 똑같은 순서값이고, 2번으로 이동을 시도하는 경우 기존 1번에 위치했던 일정을 2번으로 옮기면
+앞에 있던 기존 1번자리가 비므로 다시 앞으로 밀려지므로 제자리 이동하는 것과 구조적으로 동일하기 때문입니다.
+
+여기서, 3번 위치로 일정(b)을 이동시키려면, 3을 순서값으로 지정하면 됩니다. 3번 위치는 두 일정 c, d 사이의 위치입니다.
+
+image::/docs/imgs/schedule-move4.jpg[]
+
+
+일정 b의 위치가 c 앞에서, c 뒤로 이동됐습니다.
+여기서 주의할 점은, 요청했던 순서값 3이 일정 b의 실제 순서값이 되지 않는다는 점입니다.
+
+일정 c는 기존 일정 b가 차지하고 있던 1번 순서로 밀려나가게 되어 순서값이 1로 변했습니다.
+일정 b는 c 뒤에 붙음으로서 순서값이 2가 됐습니다. 일정 d는 그 앞에 c,b가 1,2 순서를 차지하므로 기존 3번 순서값을 유지합니다.
+
+===== 일정 이동 제약 사항
+- Day 당 일정 갯수 제한 : 1개의 Day는 총 10개까지 일정을 가질 수 있습니다. 어떤 Day에 일정이 10개 생성되어 있다면 해당 Day쪽으로 일정을 이동할 수 없습니다.
+
+
+==== 요청
+===== 헤더
+include::{snippets}/schedule-move-controller-docs-test/schedule-move-doc-test/request-headers.adoc[]
+===== 경로변수
+include::{snippets}/schedule-move-controller-docs-test/schedule-move-doc-test/path-parameters.adoc[]
+===== 본문
+include::{snippets}/schedule-move-controller-docs-test/schedule-move-doc-test/request-fields.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/schedule-move-controller-docs-test/schedule-move-doc-test/response-fields.adoc[]
+
+- `positionChanged` 값이 true인 경우에는 실제로 이동이 발생한 것에 해당합니다. 이 경우 beforeDayId와 afterDayId에 해당하는 Day 내부의 일정들의 배치가 기존과 달라졌으니 재 조회하는 것을 권장합니다.
+- `positionChanged` 값이 false인 경우에는 제자리 이동에 해당하므로 beforeDayId와 afterDayId에 해당하는 Day의 일정 배치에 변화가 없습니다.
+
+==== 예시
+===== 요청
+include::{snippets}/schedule-move-controller-docs-test/schedule-move-doc-test/http-request.adoc[]
+
+사용자는 경로 변수를 통해 일정의 식별자를 전달하고, 본문을 통해 어느 Day의 어느 순서에 일정을 이동시킬 지 지정합니다.
+
+===== 응답
+
+include::{snippets}/schedule-move-controller-docs-test/schedule-move-doc-test/http-response.adoc[]
+
+응답 본문에는 일정의 식별자값, 기존에 위치해 있던 dayId(beforeDayId)와 새로 이동한 곳의 dayId(afterDayId)가 전달됩니다.
+일정은 1번(dayId) Day에 있었다가, 2번(dayId) Day로 이동됐습니다.
+이 경우에는 다른 위치로 이동한 것에 해당하므로 positionChanged 값은 true입니다.
+
+---
+
+=== Schedule 삭제
+
+==== 기본정보
+- 메서드 : DELETE
+- URL : `/api/schedules/{scheduleId}`
+- 인증방식 : 액세스 토큰
+
+요청한 일정을 삭제합니다. 여행, 일정의 소유자만 일정을 삭제할 수 있고, 일정이 실제로 존재해야합니다.(일정이 존재하지 않을 경우 예외가 발생합니다.)
+
+==== 요청
+===== 헤더
+include::{snippets}/schedule-delete-controller-docs-test/schedule-delete-doc-test/request-headers.adoc[]
+===== 경로 변수(PathVariable)
+include::{snippets}/schedule-delete-controller-docs-test/schedule-delete-doc-test/path-parameters.adoc[]
+
+- 유효한 일정 식별자(scheduleId)를 전달해야합니다.
+
+==== 응답
+===== 본문
+성공적으로 일정이 삭제될 경우 본문에 아무 내용도 전달되지 않고, 상태코드로 204 No Content만 전달됩니다.
+
+==== 예제
+===== 요청
+include::{snippets}/schedule-delete-controller-docs-test/schedule-delete-doc-test/http-request.adoc[]
+
+사용자는 경로변수를 통해 어떤 일정을 삭제할 것인지 지정합니다.
+
+===== 응답
+include::{snippets}/schedule-delete-controller-docs-test/schedule-delete-doc-test/http-response.adoc[]
+
+일정이 성공적으로 삭제되면, 응답 본문에 아무 것도 담기지 않은 채 상태코드 204 No Content가 전달됩니다.
+
+
+'''
+
+
+
+=== Schedule 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/schedules/{scheduleId}`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/path-parameters.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/response-fields.adoc[]
+===== Coordinate
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/response-fields-beneath-coordinate.adoc[]
+===== ScheduleTime
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/response-fields-beneath-scheduleTime.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/single-schedule-query-controller-docs-test/일정_단건_조회/http-response.adoc[]
+
+'''
+
+=== Day 색상 변경
+
+==== 기본 정보
+- 메서드 : PUT
+- URL : `/api/days/{dayId}/color`
+- 인증 방식 : 엑세스 토큰
+
+Day에 지정되어 있는 색상을 변경합니다.
+
+본래 Day가 생성된 시점에는 랜덤한 색상으로 초기화되지만, 이 API를 통해 Day의 색상을 변경할 수 있습니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/day-color-update-controller-docs-test/day-color-update-docs-test/request-headers.adoc[]
+
+===== 경로 변수
+include::{snippets}/day-color-update-controller-docs-test/day-color-update-docs-test/path-parameters.adoc[]
+
+===== 본문
+include::{snippets}/day-color-update-controller-docs-test/day-color-update-docs-test/request-fields.adoc[]
+
+===== 지원 색상
+- `RED`
+- `ORANGE`
+- `LIGHT_GREEN`
+- `GREEN`
+- `BLUE`
+- `PURPLE`
+- `VIOLET`
+- `BLACK`
+
+대소문자를 구분하지 않습니다. 색상을 변경하실 때는 위 색상 이름들 중 하나를 문자열로 전달해주시면 됩니다.
+
+==== 응답
+===== 본문
+include::{snippets}/day-color-update-controller-docs-test/day-color-update-docs-test/response-fields.adoc[]
+
+==== 예시
+===== 요청
+include::{snippets}/day-color-update-controller-docs-test/day-color-update-docs-test/http-request.adoc[]
+
+사용자는 경로 변수를 통해 어느 day의 색상을 수정할 지 전달하고, 본문을 통해 색상 이름을 전달합니다.
+
+===== 응답
+include::{snippets}/day-color-update-controller-docs-test/day-color-update-docs-test/http-response.adoc[]
+
+서버는 요청에 따라 day의 색상을 변경 후, day의 식별자를 본문에 담아 상태코드 200 Ok과 함께 응답합니다.
+
+'''
+
+=== Day 단건 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/days/{dayId}`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/path-parameters.adoc[]
+
+==== 응답
+===== 본문
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/response-fields.adoc[]
+===== DayColor
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/response-fields-beneath-dayColor.adoc[]
+===== Schedule
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/response-fields-schedules.adoc[]
+===== Coordinate
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/response-fields-coordinate.adoc[]
+
+==== 예제
+===== 요청
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/single-day-query-controller-docs-test/day_단건_조회/http-response.adoc[]
+
+'''
+
+=== Day 전체 목록 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/trips/{tripId}/days`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/path-parameters.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/response-fields.adoc[]
+===== Days
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/response-fields-days.adoc[]
+===== DayColor
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/response-fields-dayColor.adoc[]
+===== Schedule
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/response-fields-schedules.adoc[]
+===== Coordinate
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/response-fields-coordinate.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/trip-day-list-query-controller-docs-test/day_목록_조회/http-response.adoc[]
+
+== User API
+
+=== 회원 프로필 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/users/{userId}/profile`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/user-rest-controller-docs-test/사용자_프로필_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/user-rest-controller-docs-test/사용자_프로필_조회/path-parameters.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/user-rest-controller-docs-test/사용자_프로필_조회/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/user-rest-controller-docs-test/사용자_프로필_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/user-rest-controller-docs-test/사용자_프로필_조회/http-response.adoc[]
+
+---
+
+=== 회원 탈퇴
+
+==== 기본 정보
+
+- 메서드 : DELETE
+- URL : `/api/users/{userId}`
+- 인증 방식 : 엑세스 토큰
+
+회원 탈퇴 시 회원의 개인정보를 비롯하여 해당 회원이 작성했던 모든 회원 관련 여행 정보들이 함께 삭제됩니다.
+
+==== 요청
+===== 헤더
+include::{snippets}/user-rest-controller-docs-test/회원_탈퇴/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/user-rest-controller-docs-test/회원_탈퇴/path-parameters.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/user-rest-controller-docs-test/회원_탈퇴/http-request.adoc[]
+===== 응답
+include::{snippets}/user-rest-controller-docs-test/회원_탈퇴/http-response.adoc[]
+
+---
+
+=== 마이페이지 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/users/{userId}/my-page`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/user-rest-controller-docs-test/마이페이지_조회/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/user-rest-controller-docs-test/마이페이지_조회/path-parameters.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/user-rest-controller-docs-test/마이페이지_조회/response-fields.adoc[]
+===== TripStatistics
+include::{snippets}/user-rest-controller-docs-test/마이페이지_조회/response-fields-tripStatistics.adoc[]
+==== 예시
+===== 요청
+include::{snippets}/user-rest-controller-docs-test/마이페이지_조회/http-request.adoc[]
+===== 응답
+include::{snippets}/user-rest-controller-docs-test/마이페이지_조회/http-response.adoc[]
+
+---
+
+=== 회원 정보 수정
+
+==== 기본 정보
+
+- 메서드 : PATCH
+- URL : `/api/users/{userId}`
+- 인증 방식 : 엑세스 토큰
+
+==== 요청
+===== 헤더
+include::{snippets}/user-rest-controller-docs-test/회원_정보_수정/request-headers.adoc[]
+===== 경로 변수
+include::{snippets}/user-rest-controller-docs-test/회원_정보_수정/path-parameters.adoc[]
+===== 본문
+include::{snippets}/user-rest-controller-docs-test/회원_정보_수정/request-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/user-rest-controller-docs-test/회원_정보_수정/http-request.adoc[]
+===== 응답
+include::{snippets}/user-rest-controller-docs-test/회원_정보_수정/http-response.adoc[]
+
+=== 여행 목록 조회
+
+==== 기본 정보
+
+- 메서드 : GET
+- URL : `/api/trips`
+
+==== 요청
+===== 쿼리 변수
+include::{snippets}/trip-condition-search-controller-docs-test/여행_목록_조회/query-parameters.adoc[]
+==== 응답
+===== 본문
+include::{snippets}/trip-condition-search-controller-docs-test/여행_목록_조회/response-fields.adoc[]
+==== 예제
+===== 요청
+include::{snippets}/trip-condition-search-controller-docs-test/여행_목록_조회/http-request.adoc[]
+===== Trips
+include::{snippets}/trip-condition-search-controller-docs-test/여행_목록_조회/response-fields-trips.adoc[]
+===== 응답
+include::{snippets}/trip-condition-search-controller-docs-test/여행_목록_조회/http-response.adoc[]
+

@@ -1,0 +1,208 @@
+# 서버 문제
+server-0001:
+  message: Unknown Error
+  detail: 예상치 못 한 서버 예외가 발생했습니다.
+
+server-9999:
+  message: NotImplemented
+  detail: 미구현 기능입니다.
+
+
+# 웹 요청 관련
+request-0001:
+  message: Invalid Request Data Format
+  detail: 요청 데이터 형식 또는 데이터 타입이 올바르지 않습니다. 요청 데이터 형식, 파라미터를 다시 확인해주세요.
+
+request-0002:
+  message: Missing Request Cookie
+  detail: 요청에 필요한 쿠키가 누락 됐습니다. 요청에 필요한 쿠키가 존재하는 지, 제대로 된 값인지 다시 확인해주세요.
+
+request-0003:
+  message: Not Valid Request Parameter
+  detail : 유효하지 않은 파라미터가 전달됐습니다. 요청 파라미터의 유효성을 다시 확인해주세요.
+
+request-0004:
+  message: Invalid Parameter Type in URL or Query Parameter
+  detail : URL의 파라미터 변수 또는 쿼리 파라미터의 타입이 올바르지 않습니다.
+
+request-0005:
+  message: Not Multipart request
+  detail: 이 API는 Multipart 요청을 필요로 합니다. Multipart 요청으로 보내주세요.
+
+# 인증/인가 관련
+
+auth-0001:
+  message: AccessToken Not Exist
+  detail: 엑세스 토큰이 존재하지 않습니다.
+
+auth-0002:
+  message: AccessToken Not Valid
+  detail: 엑세스 토큰이 유효하지 않습니다.
+
+auth-0003:
+  message: AuthorizationHeader Format Not Valid
+  detail: 인증 헤더 형식이 올바르지 않습니다. 토큰 타입이 Bearer 로 시작하는지 확인해주세요. ex) Bearer accessToken
+
+auth-0004:
+  message: RefreshToken Not Exist
+  detail: 리프레시 토큰이 존재하지 않습니다.
+
+auth-0005:
+  message: RefreshToken Not Valid
+  detail: 리프레시 토큰이 유효하지 않습니다.
+
+# 사용자(여행자) 관련
+user-0001:
+  message: TripperNotFound
+  detail: 일치하는 식별자의 여행자를 찾을 수 없습니다.
+
+user-0002:
+  message: No UserProfile Search Authority
+  detail: 해당 사용자 프로필을 조회할 권한이 없습니다.
+
+user-0003:
+  message: UserNotFound
+  detail: 해당 사용자가 존재하지 않습니다.
+
+user-0004:
+  message: No User Delete Authority
+  detail: 해당 사용자를 삭제할 권한이 없습니다.
+
+user-0005:
+  message: No User Update Authority
+  detail: 해당 사용자를 수정할 권한이 없습니다.
+
+
+# 여행 관련
+trip-0001:
+  message: Trip Not Found
+  detail: 일치하는 식별자의 Trip을 찾을 수 없습니다.
+
+trip-0002:
+  message: Invalid Trip Title
+  detail: 여행 제목이 올바르지 않습니다. 여행 제목은 null 또는 공백으로만 구성된 문자열일 수 없고, 길이는 1자 이상 20자 이하여야 합니다.
+
+trip-0004:
+  message: No Trip Update Authority
+  detail: 해당 여행을 수정할 권한이 없습니다.
+
+trip-0005:
+  message: InvalidTripPeriod
+  detail: 여행의 기간이 올바르지 않습니다. 시작일보다 종료일이 앞서거나, 시작일 또는 종료일 중 어느 하나가 null일 수 없습니다.
+
+trip-0006:
+  message: EmptyPeriodUpdate Error
+  detail: 기간이 정해진 여행에 대해서, 빈 기간으로 변경할 수 없습니다.
+
+trip-0007:
+  message: NoTripDeleteAuthority
+  detail: 해당 여행을 삭제할 권한이 없습니다.
+
+trip-0008:
+  message: NoTripDetailSearchAuthority
+  detail: 해당 여행을 단건 조회할 권한이 없습니다.
+
+trip-0009:
+  message: Too Long TripPeriod
+  detail: 여행 기간이 너무 깁니다. 여행의 최대 일수는 10일까지만 허용됩니다.
+
+trip-0010:
+  message: TripImage Upload Failed
+  detail: 이미지 저장소에 여행 이미지를 저장하는데 실패했습니다.
+
+# Day 관련
+day-0001:
+  message: DayNotFound
+  detail: 일치하는 식별자의 Day를 찾을 수 없습니다.
+
+day-0002:
+  message: Invalid Trip-Day Relationship
+  detail: Day가 Trip에 속해있지 않습니다.
+
+day-0003:
+  message: Invalid Day Color Name
+  detail: Day의 색상 이름이 누락됐거나 유효하지 않습니다. 지원하는 색상 이름 목록을 확인하여 필수로 전달해주세요.
+
+day-0004:
+  message: NoDayUpdateAuthority
+  detail: 해당 Day를 수정할 권한이 없습니다.
+
+# 일정 관련
+schedule-0001:
+  message: ScheduleNotFound
+  detail: 일치하는 식별자의 일정을 찾을 수 없습니다.
+
+schedule-0002:
+  message: NoScheduleCreateAuthority
+  detail: 해당 여행에 일정을 생성할 권한이 없습니다.
+
+schedule-0003:
+  message: NoScheduleDeleteAuthority
+  detail: 해당 일정을 삭제할 권한이 없습니다.
+
+schedule-0004:
+  message: NoScheduleUpdateAuthority
+  detail: 해당 일정을 수정할 권한이 없습니다.
+
+schedule-0005:
+  message: NoScheduleMoveAuthority
+  detail: 해당 일정을 이동할 권한이 없습니다.
+
+schedule-0006:
+  message: InvalidScheduleMoveTargetOrder
+  detail: 일정을 해당 순서로 이동시킬 수 없습니다. 순서값은 null 또는 음수일 수 없으며, 옮기려는 day 또는 임시보관함에서 유효한 순서값이여야합니다.
+
+schedule-0007:
+  message: Schedule Create Failed - Null TripId
+  detail: 일정 생성 시 필요한 TripId가 누락됐습니다.
+
+schedule-0008:
+  message: Invalid Schedule Title
+  detail: 일정 제목이 올바르지 않습니다. 일정 제목은 null 일 수 없고, 35자 이하여야 합니다.(공백, 빈 문자열 허용)
+
+schedule-0009:
+  message: Too Many Trip Schedule Count
+  detail: 여행에 더 이상 일정을 생성할 수 없습니다. 한 여행은 최대 110개의 일정을 가질 수 있습니다.
+
+schedule-0010:
+  message: Too Many Day Schedule Count
+  detail: 지정 Day에 더 이상 일정을 둘 수 없습니다. 한 Day는 최대 10개의 일정을 가질 수 있습니다.
+
+schedule-0011:
+  message: Invalid Schedule Time
+  detail: 일정의 시작 시간(startTime), 종료 시간(endTime)은 null 일 수 없음
+
+schedule-0012:
+  message: Invalid Schedule Content
+  detail: 일정의 본문은 null일 수 없으며, 크기는 65535 byte를 초과할 수 없습니다.
+
+# 장소 관련
+place-0001:
+  message: InvalidCoordinate
+  detail: 위도 또는 경도가 누락됐거나, 범위가 유효하지 않습니다. 위도는 -90 이상 90 이하여야 하며, 경도는 -180 이상 180 미만이여야 합니다.
+
+place-0002:
+  message: Null Coordinate
+  detail: 좌표가 누락됐습니다. 좌표는 필수입니다.
+
+
+# 파일 관련
+file-0001:
+  message: Empty File
+  detail: 파일이 없거나, 내용이 비어있는 파일입니다. Multipart 요청을 통해 파일을 보내주세요.
+
+file-0002:
+  message: No File Name
+  detail: 파일의 이름이 없습니다.
+
+file-0003:
+  message: No File Extension
+  detail: 파일의 확장자가 없습니다.
+
+file-0004:
+  message: Not Image File Extension
+  detail: 파일의 확장자가 이미지 파일 확장자가 아닙니다. (jpg, jpeg, gif, png, webp)
+
+file-0005:
+  message: Not Image File
+  detail: 파일이 이미지가 아닙니다.
