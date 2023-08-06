@@ -24,7 +24,6 @@ public class QuerydslDayQueryRepository {
 
     public Optional<DayScheduleDetail> findDayWithSchedulesByDayId(Long dayId) {
         DayScheduleDetail dayScheduleDetail = query
-                .from()
                 .from(day)
                 .innerJoin(day.schedules, schedule)
                 .where(day.id.eq(dayId))

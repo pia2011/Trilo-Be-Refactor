@@ -2,8 +2,8 @@ package com.cosain.trilo.trip.infra.dao.querydsl;
 
 import com.cosain.trilo.trip.application.day.service.day_search.QScheduleSummary;
 import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
-import com.cosain.trilo.trip.application.schedule.service.schedule_detail_search.QScheduleDetail;
-import com.cosain.trilo.trip.application.schedule.service.schedule_detail_search.ScheduleDetail;
+import com.cosain.trilo.trip.application.schedule.dto.QScheduleDetail;
+import com.cosain.trilo.trip.application.schedule.dto.ScheduleDetail;
 import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListQueryParam;
 import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListSearchResult;
 import com.cosain.trilo.trip.domain.vo.ScheduleIndex;
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.cosain.trilo.trip.domain.entity.QSchedule.schedule;
+
 
 @Component
 @RequiredArgsConstructor

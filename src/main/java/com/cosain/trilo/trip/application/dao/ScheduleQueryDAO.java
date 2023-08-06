@@ -1,6 +1,6 @@
 package com.cosain.trilo.trip.application.dao;
 
-import com.cosain.trilo.trip.application.schedule.service.schedule_detail_search.ScheduleDetail;
+import com.cosain.trilo.trip.application.schedule.dto.ScheduleDetail;
 import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListQueryParam;
 import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListSearchResult;
 
