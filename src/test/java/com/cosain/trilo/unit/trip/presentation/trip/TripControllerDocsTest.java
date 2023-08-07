@@ -2,7 +2,7 @@ package com.cosain.trilo.unit.trip.presentation.trip;
 
 import com.cosain.trilo.common.file.ImageFile;
 import com.cosain.trilo.support.RestDocsTestSupport;
-import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.ScheduleSummary;
 import com.cosain.trilo.trip.application.trip.TripCommandService;
 import com.cosain.trilo.trip.application.trip.TripQueryService;
 import com.cosain.trilo.trip.application.trip.dto.*;

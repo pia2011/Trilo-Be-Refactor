@@ -1,6 +1,6 @@
 package com.cosain.trilo.trip.application.trip.dto;
 
-import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.ScheduleSummary;
 import lombok.Getter;
 
 import java.util.List;

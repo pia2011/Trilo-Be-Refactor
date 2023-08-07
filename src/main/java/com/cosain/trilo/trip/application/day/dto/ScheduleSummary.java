@@ -1,4 +1,4 @@
-package com.cosain.trilo.trip.application.day.service.day_search;
+package com.cosain.trilo.trip.application.day.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;

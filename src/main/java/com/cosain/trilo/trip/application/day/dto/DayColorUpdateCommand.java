@@ -1,4 +1,4 @@
-package com.cosain.trilo.trip.application.day.service.day_color_update;
+package com.cosain.trilo.trip.application.day.dto;
 
 import com.cosain.trilo.common.exception.CustomException;
 import com.cosain.trilo.common.exception.CustomValidationException;

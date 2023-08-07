@@ -1,4 +1,4 @@
-package com.cosain.trilo.trip.presentation.day.dto;
+package com.cosain.trilo.trip.presentation.request.day;
 
 import lombok.AccessLevel;
 import lombok.Getter;

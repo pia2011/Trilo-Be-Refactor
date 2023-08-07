@@ -2,7 +2,7 @@
 package com.cosain.trilo.unit.trip.infra.dao;
 
 import com.cosain.trilo.support.RepositoryTest;
-import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.ScheduleSummary;
 import com.cosain.trilo.trip.application.schedule.dto.ScheduleDetail;
 import com.cosain.trilo.trip.application.trip.dto.TempScheduleListQueryParam;
 import com.cosain.trilo.trip.domain.entity.Schedule;

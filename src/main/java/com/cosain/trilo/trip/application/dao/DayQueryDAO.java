@@ -1,6 +1,6 @@
 package com.cosain.trilo.trip.application.dao;
 
-import com.cosain.trilo.trip.application.day.service.day_search.DayScheduleDetail;
+import com.cosain.trilo.trip.application.day.dto.DayScheduleDetail;
 
 import java.util.List;
 import java.util.Optional;

@@ -7,7 +7,7 @@ import com.cosain.trilo.trip.domain.entity.Day;
 import com.cosain.trilo.trip.domain.entity.Trip;
 import com.cosain.trilo.trip.domain.repository.DayRepository;
 import com.cosain.trilo.trip.domain.vo.DayColor;
-import com.cosain.trilo.trip.presentation.day.dto.DayColorUpdateRequest;
+import com.cosain.trilo.trip.presentation.request.day.DayColorUpdateRequest;
 import com.cosain.trilo.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

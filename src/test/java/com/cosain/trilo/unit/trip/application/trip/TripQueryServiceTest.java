@@ -5,7 +5,7 @@ import com.cosain.trilo.common.exception.trip.TripNotFoundException;
 import com.cosain.trilo.fixture.UserFixture;
 import com.cosain.trilo.trip.application.dao.ScheduleQueryDAO;
 import com.cosain.trilo.trip.application.dao.TripQueryDAO;
-import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.ScheduleSummary;
 import com.cosain.trilo.trip.application.exception.TripperNotFoundException;
 import com.cosain.trilo.trip.application.trip.TripQueryService;
 import com.cosain.trilo.trip.application.trip.dto.*;

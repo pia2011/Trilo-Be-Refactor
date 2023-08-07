@@ -1,7 +1,7 @@
 package com.cosain.trilo.trip.infra.dao.querydsl;
 
-import com.cosain.trilo.trip.application.day.service.day_search.QScheduleSummary;
-import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.QScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.ScheduleSummary;
 import com.cosain.trilo.trip.application.schedule.dto.QScheduleDetail;
 import com.cosain.trilo.trip.application.schedule.dto.ScheduleDetail;
 import com.cosain.trilo.trip.application.trip.dto.TempScheduleListQueryParam;

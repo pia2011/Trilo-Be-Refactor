@@ -1,7 +1,7 @@
 package com.cosain.trilo.trip.infra.dao;
 
 import com.cosain.trilo.trip.application.dao.DayQueryDAO;
-import com.cosain.trilo.trip.application.day.service.day_search.DayScheduleDetail;
+import com.cosain.trilo.trip.application.day.dto.DayScheduleDetail;
 import com.cosain.trilo.trip.infra.dao.querydsl.QuerydslDayQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

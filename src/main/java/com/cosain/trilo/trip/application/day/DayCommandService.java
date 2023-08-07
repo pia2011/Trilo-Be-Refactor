@@ -1,6 +1,7 @@
-package com.cosain.trilo.trip.application.day.service.day_color_update;
+package com.cosain.trilo.trip.application.day;
 
 import com.cosain.trilo.common.exception.day.DayNotFoundException;
+import com.cosain.trilo.trip.application.day.dto.DayColorUpdateCommand;
 import com.cosain.trilo.trip.application.exception.NoDayUpdateAuthorityException;
 import com.cosain.trilo.trip.domain.entity.Day;
 import com.cosain.trilo.trip.domain.repository.DayRepository;
@@ -10,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class DayColorUpdateService {
+@Transactional
+public class DayCommandService {
 
     private final DayRepository dayRepository;
 
-    @Transactional
     public void updateDayColor(DayColorUpdateCommand command) {
         Day day = findDay(command.getDayId());
 
@@ -34,5 +35,4 @@ public class DayColorUpdateService {
             throw new NoDayUpdateAuthorityException("Day를 수정할 권한이 없는 사람이 수정하려 시도함");
         }
     }
-
 }

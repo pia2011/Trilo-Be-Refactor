@@ -1,8 +1,8 @@
 package com.cosain.trilo.trip.infra.dao.querydsl;
 
-import com.cosain.trilo.trip.application.day.service.day_search.DayScheduleDetail;
-import com.cosain.trilo.trip.application.day.service.day_search.QDayScheduleDetail;
-import com.cosain.trilo.trip.application.day.service.day_search.QScheduleSummary;
+import com.cosain.trilo.trip.application.day.dto.DayScheduleDetail;
+import com.cosain.trilo.trip.application.day.dto.QDayScheduleDetail;
+import com.cosain.trilo.trip.application.day.dto.QScheduleSummary;
 import com.querydsl.core.group.GroupBy;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
