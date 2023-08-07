@@ -2,7 +2,7 @@ package com.cosain.trilo.integration.trip;
 
 import com.cosain.trilo.support.IntegrationTest;
 import com.cosain.trilo.trip.domain.entity.Trip;
-import com.cosain.trilo.trip.presentation.trip.dto.request.TripSearchRequest;
+import com.cosain.trilo.trip.presentation.request.trip.TripSearchRequest;
 import com.cosain.trilo.user.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

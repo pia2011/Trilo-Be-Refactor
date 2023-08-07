@@ -4,7 +4,7 @@ import com.cosain.trilo.support.IntegrationTest;
 import com.cosain.trilo.trip.domain.entity.Day;
 import com.cosain.trilo.trip.domain.entity.Schedule;
 import com.cosain.trilo.trip.domain.entity.Trip;
-import com.cosain.trilo.trip.presentation.schedule.dto.request.ScheduleMoveRequest;
+import com.cosain.trilo.trip.presentation.request.schedule.ScheduleMoveRequest;
 import com.cosain.trilo.user.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

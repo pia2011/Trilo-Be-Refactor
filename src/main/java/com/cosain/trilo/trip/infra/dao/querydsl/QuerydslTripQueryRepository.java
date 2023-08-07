@@ -1,16 +1,13 @@
 package com.cosain.trilo.trip.infra.dao.querydsl;
 
-import com.cosain.trilo.trip.application.trip.service.trip_condition_search.QTripSearchResponse_TripSummary;
-import com.cosain.trilo.trip.application.trip.service.trip_condition_search.TripSearchResponse;
-import com.cosain.trilo.trip.application.trip.service.trip_detail_search.QTripDetail;
-import com.cosain.trilo.trip.application.trip.service.trip_detail_search.TripDetail;
-import com.cosain.trilo.trip.application.trip.service.trip_list_search.QTripListSearchResult_TripSummary;
-import com.cosain.trilo.trip.application.trip.service.trip_list_search.TripListQueryParam;
-import com.cosain.trilo.trip.application.trip.service.trip_list_search.TripListSearchResult;
+import com.cosain.trilo.trip.application.trip.dto.*;
+import com.cosain.trilo.trip.application.trip.dto.QTripDetail;
+import com.cosain.trilo.trip.application.trip.dto.QTripListSearchResult_TripSummary;
+import com.cosain.trilo.trip.application.trip.dto.QTripSearchResponse_TripSummary;
 import com.cosain.trilo.trip.domain.vo.TripStatus;
 import com.cosain.trilo.trip.infra.dto.QTripStatistics;
 import com.cosain.trilo.trip.infra.dto.TripStatistics;
-import com.cosain.trilo.trip.presentation.trip.dto.request.TripSearchRequest;
+import com.cosain.trilo.trip.presentation.request.trip.TripSearchRequest;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;

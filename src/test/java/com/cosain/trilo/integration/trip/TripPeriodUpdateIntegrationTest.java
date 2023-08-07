@@ -8,7 +8,7 @@ import com.cosain.trilo.trip.domain.repository.ScheduleRepository;
 import com.cosain.trilo.trip.domain.repository.TripRepository;
 import com.cosain.trilo.trip.domain.vo.TripPeriod;
 import com.cosain.trilo.trip.domain.vo.TripStatus;
-import com.cosain.trilo.trip.presentation.trip.dto.request.TripPeriodUpdateRequest;
+import com.cosain.trilo.trip.presentation.request.trip.TripPeriodUpdateRequest;
 import com.cosain.trilo.user.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;

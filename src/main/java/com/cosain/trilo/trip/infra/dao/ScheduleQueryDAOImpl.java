@@ -2,8 +2,8 @@ package com.cosain.trilo.trip.infra.dao;
 
 import com.cosain.trilo.trip.application.dao.ScheduleQueryDAO;
 import com.cosain.trilo.trip.application.schedule.dto.ScheduleDetail;
-import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListQueryParam;
-import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListSearchResult;
+import com.cosain.trilo.trip.application.trip.dto.TempScheduleListQueryParam;
+import com.cosain.trilo.trip.application.trip.dto.TempScheduleListSearchResult;
 import com.cosain.trilo.trip.infra.dao.querydsl.QuerydslScheduleQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

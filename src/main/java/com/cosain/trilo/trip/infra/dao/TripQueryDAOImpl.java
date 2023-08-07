@@ -1,13 +1,13 @@
 package com.cosain.trilo.trip.infra.dao;
 
 import com.cosain.trilo.trip.application.dao.TripQueryDAO;
-import com.cosain.trilo.trip.application.trip.service.trip_condition_search.TripSearchResponse;
-import com.cosain.trilo.trip.application.trip.service.trip_detail_search.TripDetail;
-import com.cosain.trilo.trip.application.trip.service.trip_list_search.TripListQueryParam;
-import com.cosain.trilo.trip.application.trip.service.trip_list_search.TripListSearchResult;
+import com.cosain.trilo.trip.application.trip.dto.TripSearchResponse;
+import com.cosain.trilo.trip.application.trip.dto.TripDetail;
+import com.cosain.trilo.trip.application.trip.dto.TripListQueryParam;
+import com.cosain.trilo.trip.application.trip.dto.TripListSearchResult;
 import com.cosain.trilo.trip.infra.dao.querydsl.QuerydslTripQueryRepository;
 import com.cosain.trilo.trip.infra.dto.TripStatistics;
-import com.cosain.trilo.trip.presentation.trip.dto.request.TripSearchRequest;
+import com.cosain.trilo.trip.presentation.request.trip.TripSearchRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

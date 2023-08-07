@@ -4,8 +4,8 @@ import com.cosain.trilo.trip.application.day.service.day_search.QScheduleSummary
 import com.cosain.trilo.trip.application.day.service.day_search.ScheduleSummary;
 import com.cosain.trilo.trip.application.schedule.dto.QScheduleDetail;
 import com.cosain.trilo.trip.application.schedule.dto.ScheduleDetail;
-import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListQueryParam;
-import com.cosain.trilo.trip.application.trip.service.temporary_search.TempScheduleListSearchResult;
+import com.cosain.trilo.trip.application.trip.dto.TempScheduleListQueryParam;
+import com.cosain.trilo.trip.application.trip.dto.TempScheduleListSearchResult;
 import com.cosain.trilo.trip.domain.vo.ScheduleIndex;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;

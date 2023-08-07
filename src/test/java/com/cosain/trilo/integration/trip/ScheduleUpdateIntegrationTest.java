@@ -9,7 +9,7 @@ import com.cosain.trilo.trip.domain.repository.ScheduleRepository;
 import com.cosain.trilo.trip.domain.vo.ScheduleContent;
 import com.cosain.trilo.trip.domain.vo.ScheduleTime;
 import com.cosain.trilo.trip.domain.vo.ScheduleTitle;
-import com.cosain.trilo.trip.presentation.schedule.dto.request.ScheduleUpdateRequest;
+import com.cosain.trilo.trip.presentation.request.schedule.ScheduleUpdateRequest;
 import com.cosain.trilo.user.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
