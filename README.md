@@ -40,8 +40,7 @@ Trilo에서는 **손 쉽게 여행 계획**을 짜고, 여행하며 모바일로
 
 public method 를 하나로 두기보다는 각각의 의존성과 목적을 고려하여 Command 와 Query 로만 분리하였습니다. 
 
-![image](https://github.com/pia2011/Trilo-Be-Refactor/assets/53935439/47e440ab-da71-435c-b13f-793429ec4430)
-
+![image](https://github.com/pia2011/Trilo-Be-Refactor/assets/53935439/2c28736a-ee12-4f8a-918c-fd95cfda4225)
 
 </details>
 
